@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "df4cbbe3-4a35-4bde-9ff0-ca72eea82320",
+		"name": "Node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Process Presences",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"room\": \"e\"\r\n}"
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/presences/process",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"presences",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 3155\r\n}"
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/students",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Presences",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/presences?limit=50&room=e",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"presences"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "50"
+						},
+						{
+							"key": "room",
+							"value": "e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Students",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/students?limit=50&room=e",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"students"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "50"
+						},
+						{
+							"key": "room",
+							"value": "e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Registries",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_receiver}}/registries",
+					"host": [
+						"{{webapi_url_receiver}}"
+					],
+					"path": [
+						"registries"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "webapi_url_receiver",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "webapi_url_presences",
+			"value": "http://localhost:4000"
+		}
+	]
+}
