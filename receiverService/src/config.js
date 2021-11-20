@@ -11,7 +11,6 @@ const environment = {
     broker: "localhost", // 'broker.hivemq.com' ,
     port: 1883,
     topic: "sala",
-    rooms: ["sala/e", "sala/s", "sala/t"],
   },
   log: {
     level: process.env.LOG_LEVEL,

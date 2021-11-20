@@ -1,0 +1,484 @@
+[
+    {
+        "id": "51979bdd7fc2c3b7",
+        "type": "tab",
+        "label": "Leitor Cartao",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f0af89d0dc50cb6a",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sala/t",
+        "payloadType": "date",
+        "x": 144,
+        "y": 367.27275466918945,
+        "wires": [
+            [
+                "88673acb3381cca6"
+            ]
+        ]
+    },
+    {
+        "id": "69310bc7e2a74bb0",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sala/e",
+        "payloadType": "date",
+        "x": 142.63634872436523,
+        "y": 128.00000381469727,
+        "wires": [
+            [
+                "88673acb3381cca6"
+            ]
+        ]
+    },
+    {
+        "id": "b66226375512f38d",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sala/s",
+        "payloadType": "date",
+        "x": 141.63634490966797,
+        "y": 247.00000286102295,
+        "wires": [
+            [
+                "88673acb3381cca6"
+            ]
+        ]
+    },
+    {
+        "id": "4c46d829c649de53",
+        "type": "mqtt out",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "1769fb1.3c11385",
+        "x": 659.0000038146973,
+        "y": 136.63639545440674,
+        "wires": []
+    },
+    {
+        "id": "88673acb3381cca6",
+        "type": "function",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "func": "var min= 15000\nvar max= 30000\nvar num_cartao = Math.round(Math.random()*100)+15000; //Math.random(min, max) // * \nmsg.payload = { \n    timestamp: msg.payload,\n    value:  num_cartao\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 383,
+        "y": 245.90918159484863,
+        "wires": [
+            [
+                "4c46d829c649de53",
+                "f902d26ec4cfe679"
+            ]
+        ]
+    },
+    {
+        "id": "f902d26ec4cfe679",
+        "type": "debug",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 656.0000038146973,
+        "y": 343.2727355957031,
+        "wires": []
+    },
+    {
+        "id": "7c29ef95d53cb491",
+        "type": "comment",
+        "z": "51979bdd7fc2c3b7",
+        "name": "mqtt out node -  localhost:1883",
+        "info": "",
+        "x": 730.6666870117188,
+        "y": 90,
+        "wires": []
+    },
+    {
+        "id": "5b24a1604b51b24f",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sala/m",
+        "payloadType": "date",
+        "x": 149,
+        "y": 474.00000190734863,
+        "wires": [
+            [
+                "88673acb3381cca6"
+            ]
+        ]
+    },
+    {
+        "id": "d9c052e5074e294e",
+        "type": "http request",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:4000/students",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "04d558f960309db3"
+            ]
+        ]
+    },
+    {
+        "id": "a6f4989de0c07d35",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "Criar estudante",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"studentId\":3155}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "d9c052e5074e294e"
+            ]
+        ]
+    },
+    {
+        "id": "04d558f960309db3",
+        "type": "debug",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c49c89b84fcddf4b",
+        "type": "http request",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:4000/presences/process",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 420,
+        "y": 640,
+        "wires": [
+            [
+                "1fb2d88de58e58c9"
+            ]
+        ]
+    },
+    {
+        "id": "48af253b2accf506",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "Processar registos",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"room\": \"e\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 640,
+        "wires": [
+            [
+                "c49c89b84fcddf4b"
+            ]
+        ]
+    },
+    {
+        "id": "1fb2d88de58e58c9",
+        "type": "debug",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "305f4a3be387582b",
+        "type": "debug",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.results",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "3bad7e321bf765e6",
+        "type": "debug",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.results",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "bf3a4e9fe20402aa",
+        "type": "http request",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:3000/registries",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 420,
+        "y": 740,
+        "wires": [
+            [
+                "305f4a3be387582b"
+            ]
+        ]
+    },
+    {
+        "id": "735349c94b2e75d9",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "Obter registos",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 740,
+        "wires": [
+            [
+                "bf3a4e9fe20402aa"
+            ]
+        ]
+    },
+    {
+        "id": "639b78ace52ac068",
+        "type": "inject",
+        "z": "51979bdd7fc2c3b7",
+        "name": "Obter presenças",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 820,
+        "wires": [
+            [
+                "d29b7ca919714c28"
+            ]
+        ]
+    },
+    {
+        "id": "d29b7ca919714c28",
+        "type": "http request",
+        "z": "51979bdd7fc2c3b7",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:4000/presences",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 420,
+        "y": 820,
+        "wires": [
+            [
+                "3bad7e321bf765e6"
+            ]
+        ]
+    },
+    {
+        "id": "1769fb1.3c11385",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "compatmode": false,
+        "protocolVersion": "5",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

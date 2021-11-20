@@ -23,9 +23,7 @@ receptor.connect = function connect(connectCallback, messageCallback) {
       `Connected successfully to the MQTT broker at ${config.mqtt.broker} on port ${config.mqtt.port}`
     );
 
-    receptor.client.subscribe(config.mqtt.rooms[0]);
-    receptor.client.subscribe(config.mqtt.rooms[1]);
-    receptor.client.subscribe(config.mqtt.rooms[2]);
+    receptor.client.subscribe("sala/#");
 
     receptor.client.on("message", (topic, message) => {
       var topicArray = topic.split("/");
