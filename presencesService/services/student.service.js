@@ -25,7 +25,7 @@ const getAll = async (filter, options) => {
 };
 
 const getById = async (id) => {
-  return Student.find({ studentId: id }, {});
+  return Student.findOne({ studentId: id }, {});
 };
 
 module.exports = {
