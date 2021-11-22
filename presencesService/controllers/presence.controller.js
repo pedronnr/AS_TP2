@@ -1,5 +1,4 @@
 const httpStatus = require("http-status");
-const { Presence } = require("../models");
 const catchAsync = require("../utils/catchAsync");
 const pick = require("../utils/pick");
 const http = require("http");
@@ -13,14 +12,14 @@ const studentService = require("../services/student.service");
  * @returns {Promise<Presence>}
  */
 const createPresence = catchAsync(async (req, res) => {
-  const presence = await Presence.create(req.body);
+  const presence = await presenceService.create(req.body);
   res.status(httpStatus.CREATED).send(presence);
 });
 
 const getAllPresences = catchAsync(async (req, res) => {
   const filter = pick(req.query, ["value", "room", "timestamp"]);
   const options = pick(req.query, ["sortBy", "limit", "page"]);
-  const result = await Presence.paginate(filter, options);
+  const result = await presenceService.getAll(filter, options);
   res.send(result);
 });
 
