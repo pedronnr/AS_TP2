@@ -1,0 +1,49 @@
+components:
+  schemas:
+    Registry:
+      type: object
+      properties:
+        value:
+          type: number
+        room:
+          type: string
+        timestamp:
+          type: string
+      example:
+        value: 3444
+        room: "S"
+        timestamp: "1637615883"
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+
+  responses:
+    DuplicateEmail:
+      description: Email already taken
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 400
+            message: Email already taken
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 404
+            message: Not found
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
