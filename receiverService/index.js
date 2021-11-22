@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./src/config");
 const cors = require("cors");
+const swaggerRouter = require("./routes/docs.route");
 const registryRouter = require("./routes/registry.route");
 const registryService = require("./services/registry.service");
 const receptor = require("./src/client-mqtt-receiver");
@@ -26,6 +27,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/docs", swaggerRouter);
 app.use("/registries", registryRouter);
 
 app.use(cors());
