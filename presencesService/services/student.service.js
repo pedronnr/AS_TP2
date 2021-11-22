@@ -24,7 +24,12 @@ const getAll = async (filter, options) => {
   return students;
 };
 
+const getById = async (id) => {
+  return Student.find({ studentId: id }, {});
+};
+
 module.exports = {
   create,
   getAll,
+  getById,
 };

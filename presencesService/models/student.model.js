@@ -5,6 +5,15 @@ const studentSchema = mongoose.Schema(
   {
     studentId: {
       type: Number,
+      unique: true,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    card: {
+      type: { code: Number, expireDate: Date },
       required: true,
     },
   },

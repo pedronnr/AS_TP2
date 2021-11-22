@@ -8,4 +8,6 @@ router
   .post(studentController.createStudent)
   .get(studentController.getStudents);
 
+router.route("/:id").get(studentController.getStudent);
+
 module.exports = router;

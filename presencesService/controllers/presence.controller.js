@@ -50,7 +50,7 @@ const processRegistries = catchAsync(async (req, res) => {
           console.log("Presença: " + p);
 
           // Verifica se valor existe na lista de estudantes
-          let student = students.find((s) => s.studentId === p.value);
+          let student = students.find((s) => s.card.code === p.value);
           if (student) {
             // Insere presença atraves do servico
             presenceService.create(p);

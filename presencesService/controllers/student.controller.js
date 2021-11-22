@@ -20,7 +20,16 @@ const getStudents = catchAsync(async (req, res) => {
   res.send(result);
 });
 
+const getStudent = catchAsync(async (req, res) => {
+  const student = await studentService.getById(req.params.id);
+  if (!student) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Student not found");
+  }
+  res.send(student);
+});
+
 module.exports = {
   createStudent,
   getStudents,
+  getStudent,
 };
