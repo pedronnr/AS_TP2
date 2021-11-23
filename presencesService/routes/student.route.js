@@ -8,11 +8,11 @@ router
   .get(studentController.getStudents)
   .post(studentController.createStudent);
 
-
 router.route("/:id").get(studentController.getStudent);
 
-module.exports = router;
+router.route("/:id/presences").get(studentController.getPresences);
 
+module.exports = router;
 
 /**
  * @swagger
@@ -20,7 +20,6 @@ module.exports = router;
  *   name: Students
  *   description: Students data
  */
-
 
 /**
  * @swagger

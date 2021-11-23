@@ -25,7 +25,11 @@ const getAll = async (filter, options) => {
 };
 
 const getById = async (id) => {
-  return await Student.findOne({ studentId: id }, {});
+  return await Student.findOne({ studentId: id }, { presences: 0, id: 0 });
+};
+
+const getPresencesById = async (id) => {
+  return await Student.findOne({ studentId: id }, { presences: 1 });
 };
 
 const updateStudentPresences = async (id, presences) => {
@@ -44,4 +48,5 @@ module.exports = {
   getAll,
   getById,
   updateStudentPresences,
+  getPresencesById,
 };

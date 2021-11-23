@@ -28,8 +28,17 @@ const getStudent = catchAsync(async (req, res) => {
   res.send(student);
 });
 
+const getPresences = catchAsync(async (req, res) => {
+  const student = await studentService.getPresencesById(req.params.id);
+  if (!student) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Student not found");
+  }
+  res.send(student);
+});
+
 module.exports = {
   createStudent,
   getStudents,
   getStudent,
+  getPresences,
 };
