@@ -28,13 +28,18 @@
 			"response": []
 		},
 		{
-			"name": "Create Student",
+			"name": "POST Student",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"studentId\": 3155\r\n}"
+					"raw": "{\r\n    \"studentId\": 3155,\r\n    \"name\": \"Peter Ribieri\",\r\n    \"card\" : {\r\n        \"code\": 3155,\r\n        \"expireDate\": \"2021-11-22T19:20:23\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "{{webapi_url_presences}}/students",
@@ -49,7 +54,7 @@
 			"response": []
 		},
 		{
-			"name": "Obter Presences",
+			"name": "GET Presences",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -83,7 +88,7 @@
 			"response": []
 		},
 		{
-			"name": "Obter Students",
+			"name": "GET Students",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -117,7 +122,58 @@
 			"response": []
 		},
 		{
-			"name": "Obter Registries",
+			"name": "GET Student",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/students/3155",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"students",
+						"3155"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Student Presences",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/students/3155/presences",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"students",
+						"3155",
+						"presences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Registries",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -135,6 +191,33 @@
 					],
 					"path": [
 						"registries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"pribieri\",\r\n    \"name\": \"Peter Ribieri\",\r\n    \"email\": \"prib@alunos.ipca.pt\",\r\n    \"password\":\"amen123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{webapi_url_receiver}}/auth/register",
+					"host": [
+						"{{webapi_url_receiver}}"
+					],
+					"path": [
+						"auth",
+						"register"
 					]
 				}
 			},
