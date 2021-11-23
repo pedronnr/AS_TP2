@@ -1,5 +1,6 @@
 const httpStatus = require("http-status");
 const catchAsync = require("../utils/catchAsync");
+const moment = require("moment");
 const pick = require("../utils/pick");
 const http = require("http");
 const config = require("../src/config");
@@ -45,16 +46,29 @@ const processRegistries = catchAsync(async (req, res) => {
         let presences = JSON.parse(data).results;
         console.log(presences);
 
+        let presenceObj = { presences: [] };
+
         // itera sobre as presenças e insere na bd de presencas
         presences.forEach((p, index, array) => {
-          console.log("Presença: " + p);
-
           // Verifica se valor existe na lista de estudantes
-          let student = students.find((s) => s.card.code === p.value);
-          if (student) {
+          let indexStudent = students.findIndex((s) => s.card.code === p.value);
+          if (indexStudent >= 0) {
+            // Cria presença
+            let presence = {
+              day: moment(p.timestamp),
+              hour: moment(p.timestamp).hour(),
+              minute: moment(p.timestamp).minute(),
+              room: p.room,
+            };
+
             // Insere presença atraves do servico
-            presenceService.create(p);
+            students[indexStudent].presences.push(presence);
           }
+        });
+
+        // Atualiza todos os students
+        students.forEach((s, index, array) => {
+          studentService.updateStudentPresences(s.studentId, s.presences);
         });
 
         res.status(httpStatus.OK).send(presences);

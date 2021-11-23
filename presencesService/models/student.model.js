@@ -16,6 +16,12 @@ const studentSchema = mongoose.Schema(
       type: { code: Number, expireDate: Date },
       required: true,
     },
+    presences: [
+      {
+        type: { day: Date, hour: Number, minute: Number, room: String },
+        required: false,
+      },
+    ],
   },
   {
     timestamps: true,

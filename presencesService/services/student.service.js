@@ -25,11 +25,23 @@ const getAll = async (filter, options) => {
 };
 
 const getById = async (id) => {
-  return Student.findOne({ studentId: id }, {});
+  return await Student.findOne({ studentId: id }, {});
+};
+
+const updateStudentPresences = async (id, presences) => {
+  let student = await Student.findOne({ studentId: id }, {});
+  console.log(student);
+  if (!student) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Student not found");
+  }
+  Object.assign(student.presences, presences);
+  await student.save();
+  return student;
 };
 
 module.exports = {
   create,
   getAll,
   getById,
+  updateStudentPresences,
 };
