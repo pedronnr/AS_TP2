@@ -34,7 +34,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"studentId\": 3155,\r\n    \"name\": \"Peter Ribieri\",\r\n    \"card\" : {\r\n        \"code\": 3155,\r\n        \"expireDate\": \"2021-11-22T19:20:23\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"studentId\": 3155,\r\n    \"name\": \"Peter Ribieri\",\r\n    \"card\" : {\r\n        \"code\": 1,\r\n        \"expireDate\": \"2021-11-22T19:20:23\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -81,6 +81,44 @@
 						{
 							"key": "room",
 							"value": "e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Presences by Day",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/presences?year=2021&month=10&day=1",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"presences"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2021"
+						},
+						{
+							"key": "month",
+							"value": "10"
+						},
+						{
+							"key": "day",
+							"value": "1"
 						}
 					]
 				}

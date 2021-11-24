@@ -1,4 +1,4 @@
-const { Presence } = require("../models");
+const { Presence, Student } = require("../models");
 
 /**
  * Create a Presence
@@ -20,8 +20,18 @@ const create = async (presenceBody) => {
  * @returns {Promise<QueryResult>}
  */
 const getAll = async (filter, options) => {
-  const presences = await Presence.paginate(filter, options);
-  return presences;
+  let filters = {};
+  if (filter.year) {
+    filters["presences.year"] = filter.year;
+  }
+  if (filter.month) {
+    filters["presences.month"] = filter.month;
+  }
+  if (filter.day) {
+    filters["presences.day"] = filter.day;
+  }
+
+  return await Student.findOne(filters, { presences: 1 });
 };
 
 module.exports = {

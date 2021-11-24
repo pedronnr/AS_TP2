@@ -29,7 +29,8 @@ const getStudent = catchAsync(async (req, res) => {
 });
 
 const getPresences = catchAsync(async (req, res) => {
-  const student = await studentService.getPresencesById(req.params.id);
+  const filter = pick(req.query, ["from", "to", "room"]);
+  const student = await studentService.getPresencesById(req.params.id, filter);
   if (!student) {
     throw new ApiError(httpStatus.NOT_FOUND, "Student not found");
   }

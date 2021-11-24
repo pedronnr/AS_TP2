@@ -18,7 +18,7 @@ const createPresence = catchAsync(async (req, res) => {
 });
 
 const getAllPresences = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ["value", "room", "timestamp"]);
+  const filter = pick(req.query, ["year", "month", "day"]);
   const options = pick(req.query, ["sortBy", "limit", "page"]);
   const result = await presenceService.getAll(filter, options);
   res.send(result);
@@ -55,7 +55,10 @@ const processRegistries = catchAsync(async (req, res) => {
           if (indexStudent >= 0) {
             // Cria presença
             let presence = {
-              day: moment(p.timestamp),
+              date: moment(p.timestamp),
+              year: moment(p.timestamp).year(),
+              month: moment(p.timestamp).month(),
+              day: moment(p.timestamp).day(),
               hour: moment(p.timestamp).hour(),
               minute: moment(p.timestamp).minute(),
               room: p.room,

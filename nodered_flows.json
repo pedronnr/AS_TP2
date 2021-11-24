@@ -114,7 +114,7 @@
         "type": "function",
         "z": "51979bdd7fc2c3b7",
         "name": "",
-        "func": "var min= 15000\nvar max= 30000\nvar num_cartao = Math.round(Math.random()*100)+15000; //Math.random(min, max) // * \nmsg.payload = { \n    timestamp: msg.payload,\n    value:  num_cartao\n};\nreturn msg;",
+        "func": "var min= 15000\nvar max= 30000\nvar num_cartao = Math.floor(Math.random() * 2) + 1;\nmsg.payload = { \n    timestamp: msg.payload,\n    value:  num_cartao\n};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",

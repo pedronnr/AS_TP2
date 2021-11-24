@@ -18,7 +18,15 @@ const studentSchema = mongoose.Schema(
     },
     presences: [
       {
-        type: { day: Date, hour: Number, minute: Number, room: String },
+        type: {
+          date: Date,
+          year: Number,
+          month: Number,
+          day: Number,
+          hour: Number,
+          minute: Number,
+          room: String,
+        },
         required: false,
       },
     ],

@@ -28,8 +28,18 @@ const getById = async (id) => {
   return await Student.findOne({ studentId: id }, { presences: 0, id: 0 });
 };
 
-const getPresencesById = async (id) => {
-  return await Student.findOne({ studentId: id }, { presences: 1 });
+const getPresencesById = async (id, filter) => {
+  let filters = {};
+  filters.studentId = id;
+  if (filter.from && filter.to) {
+    filters["presences.date"] = { $gt: filter.from, $lt: filter.to };
+  }
+  if (filter.room) {
+    filters["presences.room"] = filter.room;
+  }
+
+  console.log(filters);
+  return await Student.findOne(filters, { "presences.$": 1 });
 };
 
 const updateStudentPresences = async (id, presences) => {
