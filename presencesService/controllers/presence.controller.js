@@ -26,13 +26,20 @@ const getAllPresences = catchAsync(async (req, res) => {
 
 const processRegistries = catchAsync(async (req, res) => {
   console.log(req.body);
+  const filter = pick(req.query, ["timestamp"]);
+  console.log(filter);
+
+  let queryStr = "";
+  if (filter.timestamp) {
+    queryStr = "&timestamp>=" + filter.timestamp;
+  }
 
   let studentPromise = await studentService.getAll({}, {});
   let students = studentPromise.results;
   console.log(students);
 
   http.get(
-    config.urlReceiverService + "registries?limit=50&timestamp>=",
+    config.urlReceiverService + "registries?limit=50" + queryStr,
     function (resp) {
       console.log("Processing registries...");
 
