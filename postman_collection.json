@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "df4cbbe3-4a35-4bde-9ff0-ca72eea82320",
-		"name": "Node",
+		"name": "AS_TP2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -15,13 +15,19 @@
 					"raw": "{\r\n    \"room\": \"e\"\r\n}"
 				},
 				"url": {
-					"raw": "{{webapi_url_presences}}/presences/process",
+					"raw": "{{webapi_url_presences}}/presences/process?timestamp=12312321123213213",
 					"host": [
 						"{{webapi_url_presences}}"
 					],
 					"path": [
 						"presences",
 						"process"
+					],
+					"query": [
+						{
+							"key": "timestamp",
+							"value": "12312321123213213"
+						}
 					]
 				}
 			},
