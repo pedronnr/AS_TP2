@@ -5,8 +5,24 @@ components:
       properties:
         studentId:
           type: number
+        card:
+          $ref: "#/components/schemas/Card"
       example:
-        studentId: 5000
+        studentd: 500,
+        card:
+          value:
+            code: 4563
+            expireDate: "42323424"
+    Card:
+      type: object
+      properties:
+        code:
+          type: number
+        expireDate: 
+          type: string
+      example:
+        code: 4563
+        expireDate: "42323424"
 
     Error:
       type: object
