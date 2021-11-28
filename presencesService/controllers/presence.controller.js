@@ -53,21 +53,20 @@ const processRegistries = catchAsync(async (req, res) => {
         let presences = JSON.parse(data).results;
         console.log(presences);
 
-        let presenceObj = { presences: [] };
-
         // itera sobre as presenças e insere na bd de presencas
         presences.forEach((p, index, array) => {
           // Verifica se valor existe na lista de estudantes
           let indexStudent = students.findIndex((s) => s.card.code === p.value);
           if (indexStudent >= 0) {
+            let date = moment(p.timestamp);
             // Cria presença
             let presence = {
-              date: moment(p.timestamp),
-              year: moment(p.timestamp).year(),
-              month: moment(p.timestamp).month(),
-              day: moment(p.timestamp).day(),
-              hour: moment(p.timestamp).hour(),
-              minute: moment(p.timestamp).minute(),
+              date: date,
+              year: date.year(),
+              month: date.month() + 1,
+              day: date.date(),
+              hour: date.hour(),
+              minute: date.minute(),
               room: p.room,
             };
 

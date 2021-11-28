@@ -2,7 +2,7 @@
     {
         "id": "51979bdd7fc2c3b7",
         "type": "tab",
-        "label": "Leitor Cartao",
+        "label": "3155",
         "disabled": false,
         "info": "",
         "env": []
@@ -225,7 +225,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"studentId\":3155}",
+        "payload": "{\"studentId\":3155,\"name\":\"Peter Ribieri\",\"card\":{\"code\":1,\"expireDate\":\"2021-11-22T19:20:23\"}}",
         "payloadType": "json",
         "x": 140,
         "y": 340,
@@ -260,7 +260,7 @@
         "method": "POST",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://localhost:4000/presences/process",
+        "url": "http://localhost:4000/presences/process?timestamp=1638096218",
         "tls": "",
         "persist": false,
         "proxy": "",

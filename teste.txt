@@ -1,8 +1,0 @@
-1. Guardar num documento do MongoDB
-2. Novo serviço que:
-	. Registar cartao (Aluno)
-	. Consultar registos ate ao momento
-	. Devolve lista de presenças
-	
-Aluno	Cartao	Presenca
-3155	3155	2021-01-01 21:00:00
