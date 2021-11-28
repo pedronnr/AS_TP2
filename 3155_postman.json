@@ -217,6 +217,42 @@
 			"response": []
 		},
 		{
+			"name": "GET Student Presences by Dates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{webapi_url_presences}}/students/3155/presences?from=2021-01-01&to=2021-12-31",
+					"host": [
+						"{{webapi_url_presences}}"
+					],
+					"path": [
+						"students",
+						"3155",
+						"presences"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2021-01-01"
+						},
+						{
+							"key": "to",
+							"value": "2021-12-31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET Registries",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true

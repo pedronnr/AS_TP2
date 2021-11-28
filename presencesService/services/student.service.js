@@ -29,17 +29,20 @@ const getById = async (id) => {
 };
 
 const getPresencesById = async (id, filter) => {
-  let filters = {};
-  filters.studentId = id;
+  console.log(filter);
+  let filters = {
+    studentId: id,
+  };
+
+  // Filtra pelas datas
   if (filter.from && filter.to) {
-    filters["presences.date"] = { $gt: filter.from, $lt: filter.to };
-  }
-  if (filter.room) {
-    filters["presences.room"] = filter.room;
+    filters["presences.date"] = {
+      $gte: new Date(filter.from),
+      $lte: new Date(filter.to),
+    };
   }
 
-  console.log(filters);
-  return await Student.findOne(filters, { "presences.$": 1 });
+  return await Student.findOne(filters, { presences: 1 });
 };
 
 const updateStudentPresences = async (id, presences) => {
