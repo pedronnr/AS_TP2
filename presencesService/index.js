@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./src/config");
 const cors = require("cors");
+require("dotenv").config();
 const swaggerRouter = require("./routes/docs.route");
 const presenceRouter = require("./routes/presence.route");
 const studentRouter = require("./routes/student.route");
@@ -10,6 +11,8 @@ const studentRouter = require("./routes/student.route");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+console.log(process.env.PORT);
 
 app.use("/docs", swaggerRouter);
 app.use("/presences", presenceRouter);
